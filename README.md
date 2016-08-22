@@ -47,8 +47,8 @@ a `.wwprc` file's content looks like this:
 
 there are other options, but it's better to ignore it because the default value of these options is for the current directory architecture of weex project.
 
-* `packer`: the path of the generated packer file (relative to the root).
-* `componentsPath`: the path of the components' directory (relative to the root).
+* `packer`: absolute path of the generated packer file (relative to the root).
+* `componentsPath`: abslute path of the components' directory (relative to the root).
 * `apisPath`: the path of the APIs' directory (relative to the root).
 
 ### run the command
