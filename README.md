@@ -73,5 +73,5 @@ Alias for `--debug`, specifying whether to log out the debug informations in WWP
 
 ## reference: how to extend a component/api in weex-html5 ?
 
-* [weex_extend_demo](https://github.com/MrRaindrop/weex_extend_demo)
-* [doc: extend to web](http://alibaba.github.io/weex/doc/advanced/extend-to-html5.html)
+* [weex_extend_demo](https://github.com/MrRaindrop/weex_extend_demo): a example for defining your own component in weex-html5. 
+* [doc: extend to web](http://alibaba.github.io/weex/doc/advanced/extend-to-html5.html): official document for extending components and APIs in weex-html5.
