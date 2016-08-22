@@ -1,0 +1,29 @@
+{
+  "name": "wwp",
+  "version": "0.1.0",
+  "description": "weex web packer",
+  "keywords": [
+    "weex",
+    "web",
+    "html5",
+    "packer"
+  ],
+  "author": {
+    "name": "MrRaindrop",
+    "email": "tekkahs@gmail.com"
+  },
+  "homepage": "https://github.com/MrRaindrop/wwp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrRaindrop/wwp.git"
+  },
+  "dependencies": {
+    "commander": "^2.9.0"
+  },
+  "bin": {
+    "wwp": "./bin/wwp"
+  },
+  "bugs": {
+    "url": "https://github.com/MrRaindrop/wwp/issues"
+  }
+}

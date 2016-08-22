@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+
+var exec = require('child_process').exec
+var cmd = require('commander')
+var fs = require('fs')
+var path = require('path')
+
+var log = require('../lib/log')
+var wwp = require('../lib')
+
+var root = process.cwd()
+
+var DEFAULT_CONFIG_PATH = '.wwprc'
+var DEFAULT_COMPONENTS_PATH = './html5/browser/extend/components'
+var DEFAULT_APIS_PATH = './html5/browser/extend/api'
+var DEFAULT_PACKER = './html5/browser/extend/packer.js'
+
+// cli
+
+cmd
+  .version(require('../package.json').version)
+  .usage('[options]')
+  .option('-d, --debug', 'to show debug logs')
+  .option('-c, --config <configFilePath>', 'specify the config file path')
+  .parse(process.argv)
+
+log = log(cmd.debug).log
+
+// read config
+
+var configPath = path.resolve(root, cmd.config || DEFAULT_CONFIG_PATH)
+log('configPath:', configPath)
+
+var config = JSON.parse(fs.readFileSync(configPath, 'utf-8'))
+config = JSON.parse(fs.readFileSync(configPath))
+config.debug = cmd.debug
+
+config.componentsPath = path.resolve(root, config.componentsPath || DEFAULT_COMPONENTS_PATH)
+config.apisPath = path.resolve(root, config.apisPath || DEFAULT_APIS_PATH)
+config.packer = path.resolve(root, config.packer || DEFAULT_PACKER)
+
+log('config:\n', JSON.stringify(config, null, 2))
+
+wwp.pack(config)
