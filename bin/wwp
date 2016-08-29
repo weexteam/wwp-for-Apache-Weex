@@ -13,6 +13,7 @@ var root = process.cwd()
 var DEFAULT_CONFIG_PATH = '.wwprc'
 var DEFAULT_COMPONENTS_PATH = './html5/browser/extend/components'
 var DEFAULT_APIS_PATH = './html5/browser/extend/api'
+var DEFAULT_LOADERS_PATH = './html5/browser/extend/loader'
 var DEFAULT_PACKER = './html5/browser/extend/packer.js'
 
 // cli
@@ -37,6 +38,7 @@ config.debug = cmd.debug
 
 config.componentsPath = path.resolve(root, config.componentsPath || DEFAULT_COMPONENTS_PATH)
 config.apisPath = path.resolve(root, config.apisPath || DEFAULT_APIS_PATH)
+config.loadersPath = path.resolve(root, config.loadersPath || DEFAULT_LOADERS_PATH)
 config.packer = path.resolve(root, config.packer || DEFAULT_PACKER)
 
 log('config:\n', JSON.stringify(config, null, 2))

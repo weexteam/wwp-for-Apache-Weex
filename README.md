@@ -49,6 +49,7 @@ there are other options, but it's better to ignore it because the default value 
 
 * `packer`: absolute path of the generated packer file (relative to the root).
 * `componentsPath`: abslute path of the components' directory (relative to the root).
+* `loaersPath`: absolute path of the loaders' directory (relative to the root).
 * `apisPath`: the path of the APIs' directory (relative to the root).
 
 ### run the command
