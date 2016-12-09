@@ -1,6 +1,6 @@
 {
   "name": "wwp",
-  "version": "0.3.2",
+  "version": "0.3.4",
   "description": "weex web packer",
   "keywords": [
     "weex",
@@ -18,9 +18,11 @@
     "url": "https://github.com/MrRaindrop/wwp.git"
   },
   "dependencies": {
+    "bluebird": "^3.4.6",
     "chalk": "^1.1.3",
     "commander": "^2.9.0",
-    "fs-extra": "^0.30.0"
+    "fs-extra": "^0.30.0",
+    "request": "^2.79.0"
   },
   "bin": {
     "wwp": "./bin/wwp"
