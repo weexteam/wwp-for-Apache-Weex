@@ -41,8 +41,12 @@ a `.wwprc` file's content looks like this:
     "modal",
     "animation",
     "navigator"
+  ],
+  "npm": [
+    "weex-picker"
   ]
-}
+},
+
 ```
 
 there are other options, but it's better to ignore it because the default value of these options is for the current directory architecture of weex project.

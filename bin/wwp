@@ -13,12 +13,9 @@
  * @param loaders: a list of extra loaders that you choose to e packed.
  * @param npm: a list of extensions (components and apis modules) and required from npm instead of local path.
  *   a demo for specifying a cnpm module:
- *   - "npm": [{
- *     "platform": "cnpm", // or "yarn" if you have the yarn installed in global.
- *     "modules": {
- *       "weex-picker-web": "*"
- *     }
- *   }]
+ *   - "npm": [
+ *       "weex-picker-web"
+ *     ]
  */
 
 var exec = require('child_process').exec
@@ -40,6 +37,8 @@ var DEFAULT_PACKER = './html5/browser/extend/packer.js'
 var DEFAULT_BUNDLE_MARK = '{{bundle}}'
 var DEFAULT_BUNDLE_NAME = 'bundle'
 var DEFAULT_BUNDLE_DIST = './dist'
+var DEFAULT_BUNDLE_ENTRY = './src/index.html'
+var DEFAULT_BUNDLE_OUTPUT = './bundle/build/index.html'
 
 function normalizeUrlProtocol (url) {
   if (url.match(/^\/\//)) {
@@ -84,13 +83,25 @@ config.componentsPath = path.resolve(root, config.componentsPath || DEFAULT_COMP
 config.apisPath = path.resolve(root, config.apisPath || DEFAULT_APIS_PATH)
 config.loadersPath = path.resolve(root, config.loadersPath || DEFAULT_LOADERS_PATH)
 config.packer = path.resolve(root, config.packer || DEFAULT_PACKER)
-config.bundle && !config.bundle.mark && (config.bundle.mark = DEFAULT_BUNDLE_MARK)
-config.bundle && !config.bundle.name && (config.bundle.name = DEFAULT_BUNDLE_NAME)
-config.bundle && (config.bundle.dist = path.resolve(root, config.bundle.dist || DEFAULT_BUNDLE_DIST))
 
-var bundle = config.bundle
-bundle && bundle.we && (bundle.we = normalizePath(bundle.we))
-bundle && bundle.js && (bundle.js = normalizePath(bundle.js))
+/**
+ * bundled
+ *   - mark: '{{bundle}}' by default.
+ *   - name: bundle's name.
+ *   - dist: dist path.
+ *   - entry: index.html's path.
+ *   - output: path for output the bundled index.html.
+ */
+if (config.bundle) {
+  var bundle = config.bundle
+  !bundle.mark && (bundle.mark = DEFAULT_BUNDLE_MARK)
+  !bundle.name && (bundle.name = DEFAULT_BUNDLE_NAME)
+  bundle.dist = path.resolve(root, bundle.dist || DEFAULT_BUNDLE_DIST)
+  bundle.entry = path.resolve(root, bundle.entry || DEFAULT_BUNDLE_ENTRY)
+  bundle.output = path.resolve(root, bundle.ouput || DEFAULT_BUNDLE_OUTPUT)
+  bundle.we && (bundle.we = normalizePath(bundle.we))
+  bundle.js && (bundle.js = normalizePath(bundle.js))
+}
 
 log('config:\n', JSON.stringify(config, null, 2))
 
